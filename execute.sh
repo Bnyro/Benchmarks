@@ -28,3 +28,5 @@ for lang in zig c rust golang v crystal; do
   rm "$lang"
 done
 
+# final cleanup
+rm zig.o
