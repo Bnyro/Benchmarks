@@ -7,6 +7,7 @@ rustc rust.rs
 v v.v
 crystal build crystal.cr
 gcc c.c -o c
+nim c -d:release nim.nim 2> /dev/null
 
 # benchmark a program by build size and execution time
 benchmark() {
@@ -23,7 +24,7 @@ benchmark() {
 }
 
 # benchmark all the programs
-for lang in zig c rust golang v crystal; do
+for lang in zig c rust golang v crystal nim; do
   benchmark $lang
   rm "$lang"
 done
