@@ -1,12 +1,12 @@
 #!/usr/bin/bash
 
 # build all the programs
-zig build-exe zig.zig
-go build golang.go
-rustc rust.rs
-v v.v
-crystal build crystal.cr
-gcc c.c -o c
+zig build-exe -lc -O ReleaseFast zig.zig
+go build -ldflags "-s -w" golang.go
+rustc -C opt-level=3 rust.rs
+v -prod -no-bounds-checking -prealloc v.v
+crystal build --release crystal.cr
+gcc c.c -O3 -o c
 nim c -d:release nim.nim 2> /dev/null
 
 # benchmark a program by build size and execution time
